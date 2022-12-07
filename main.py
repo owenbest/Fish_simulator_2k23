@@ -140,7 +140,7 @@ def main_gameplay():
             up_pips.pop(0)
             low_pips.pop(0)
 
-        if score == 10 :
+        if score == 2023 :
             return display_screen_window.blit(game_image['Youwin'],(0,0))
             
         
@@ -188,15 +188,6 @@ def is_Colliding(p_x, p_y, up_pipes, low_pipes):
                 
   
     return False
-
-
-
-
-  
-        
-        
-            
-
 
 def get_Random_Pipes():
     """
