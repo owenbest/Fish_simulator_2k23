@@ -9,7 +9,7 @@ import time
 
 
 
-FPS = 45
+FPS = 32
 scr_width = 289
 scr_height = 511
 display_screen_window = pygame.display.set_mode((scr_width, scr_height))
@@ -19,10 +19,10 @@ game_audio_sound = {}
 player = 'images/newfish.png'
 bcg_image = 'images/Background.png'
 pipe_image = 'images/pipe.png'
-coin_image = pygame.image.load('images/coin_0.png')
 mixer.init()
 mixer.music.load('sounds/Mo Bamba.mp3')
 mixer.music.play()
+
 
 
 
@@ -80,11 +80,13 @@ def main_gameplay():
     ]
 
     pip_Vx = -4
+    
 
     p_vx = -9
     p_mvx = 10
     p_mvy = -8
     p_accuracy = 1
+    
 
     p_flap_accuracy = -8
     p_flap = False
@@ -137,9 +139,12 @@ def main_gameplay():
         if up_pips[0]['x'] < -game_image['pipe'][0].get_width():
             up_pips.pop(0)
             low_pips.pop(0)
+
+        if score == 10 :
+            return display_screen_window.blit(game_image['Youwin'],(0,0))
+            
+        
       
-        if score == 2023 :
-            return display_screen_window.blit(winscreen,(0,0))
         
         display_screen_window.blit(game_image['background'], (0, 0))
         for pip_upper, pip_lower in zip(up_pips, low_pips):
@@ -186,6 +191,13 @@ def is_Colliding(p_x, p_y, up_pipes, low_pipes):
 
 
 
+
+  
+        
+        
+            
+
+
 def get_Random_Pipes():
     """
     Generate positions of two pipes(one bottom straight and one top rotated ) for blitting on the screen
@@ -216,11 +228,13 @@ if __name__ == "__main__":
         pygame.image.load('images/6.png').convert_alpha(),
         pygame.image.load('images/7.png').convert_alpha(),
         pygame.image.load('images/8.png').convert_alpha(),
-        pygame.image.load('images/9.png').convert_alpha(),
+        pygame.image.load('images/9.png').convert_alpha
+        
         
     )
-    game_image['win'] = pygame.image.load('images/win.png').convert_alpha()
     game_image['message'] = pygame.image.load('images/message.png').convert_alpha()
+    game_image['Youwin'] = pygame.image.load('images/Youwin.png').convert_alpha()
+
     game_image['base'] = pygame.image.load('images/base.png').convert_alpha()
     game_image['pipe'] = (pygame.transform.rotate(pygame.image.load(pipe_image).convert_alpha(), 180),
                           pygame.image.load(pipe_image).convert_alpha()
@@ -238,4 +252,5 @@ if __name__ == "__main__":
         
         welcome_main_screen()  
         main_gameplay() 
+       
         
