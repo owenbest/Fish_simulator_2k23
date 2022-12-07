@@ -138,7 +138,7 @@ def main_gameplay():
             up_pips.pop(0)
             low_pips.pop(0)
       
-        iif score == 2023 :
+        if score == 2023 :
             return display_screen_window.blit(winscreen,(0,0))
         
         display_screen_window.blit(game_image['background'], (0, 0))
