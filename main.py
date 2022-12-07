@@ -138,10 +138,8 @@ def main_gameplay():
             up_pips.pop(0)
             low_pips.pop(0)
       
-        if score == 2023:
-            return 
-        winscreen = pygame.image.load('images/Youwin.png')
-        display_screen_window.blit(winscreen,(0,0))
+        iif score == 2023 :
+            return display_screen_window.blit(winscreen,(0,0))
         
         display_screen_window.blit(game_image['background'], (0, 0))
         for pip_upper, pip_lower in zip(up_pips, low_pips):
